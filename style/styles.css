@@ -26,7 +26,8 @@
     justify-content: flex-end;
 }
 
-.display p{
+.display-text{
+    width: 400px;
     text-align: right;
     font-size: 28px;
 }
