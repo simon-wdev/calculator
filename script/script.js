@@ -1,7 +1,16 @@
+const btns = document.querySelectorAll(".btn")
+
 let result;
 let num1;
 let num2;
-let operators = ["+", "-", "*", "/"]
+let operator;
+
+btns.forEach(btn => {
+    btn.addEventListener("click", function(){
+        let text = document.getElementById("text");
+        text.value += btn.value;
+    })
+})
 
 function add(num1, num2){
     return result = num1 + num2;
@@ -31,4 +40,8 @@ function operate(num1, num2, currentOp){
     }else{
         divide(num1, num2)
     }
+}
+
+function userInput(){
+    
 }
