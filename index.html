@@ -12,22 +12,22 @@
     <input class="display-text" type="text" id="text">
 </div>
 <div class="btnBox">
-    <button class="btn num7" value="7">7</button>
-    <button class="btn num8" value="8">8</button>
-    <button class="btn num9" value="9">9</button>
-    <button class="btn opDiv" value="/">/</button>
-    <button class="btn num4" value="4">4</button>
-    <button class="btn num5" value="5">5</button>
-    <button class="btn num6" value="6">6</button>
-    <button class="btn opMul" value="*">x</button>
-    <button class="btn num1" value="1">1</button>
-    <button class="btn num2" value="2">2</button>
-    <button class="btn num3" value="3">3</button>
-    <button class="btn opSub" value="-">-</button>
-    <button class="btn num0" value="0">0</button>
-    <button class="btn comma" value=".">.</button>
-    <button class="btn eval">=</button>
-    <button class="btn clear">C</button>
+    <button class="btn btnNum num7" value="7">7</button>
+    <button class="btn btnNum num8" value="8">8</button>
+    <button class="btn btnNum num9" value="9">9</button>
+    <button class="btn btnOP opDiv" value="+">+</button>
+    <button class="btn btnNum num4" value="4">4</button>
+    <button class="btn btnNum num5" value="5">5</button>
+    <button class="btn btnNum num6" value="6">6</button>
+    <button class="btn btnOP opMul" value="*">x</button>
+    <button class="btn btnNum num1" value="1">1</button>
+    <button class="btn btnNum num2" value="2">2</button>
+    <button class="btn btnNum num3" value="3">3</button>
+    <button class="btn btnOP opSub" value="-">-</button>
+    <button class="btn btnNum num0" value="0">0</button>
+    <button class="btn btnComma comma" value=".">.</button>
+    <button class="btn btnEV eval" onclick="operate(previousValue, operator)">=</button>
+    <button class="btn btnClear clear" onclick="clear()">C</button>
 </div>
 
 
