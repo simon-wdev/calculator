@@ -6,7 +6,8 @@ let text = document.getElementById("text");
 let result;
 let currentValue;
 let previousValue;
-let isSecond;
+let isSecond = false;
+let isResult = false;
 let operator;
 
 
@@ -15,6 +16,9 @@ btns.forEach(btn => {
     btn.addEventListener("click", function(){
             if(isSecond){
                 text.value += btn.value; //input + button text update;
+            }else if(isResult){
+                text.value = ""; //clears value on button press
+                isResult = false;
             }else{
                 text.value += btn.value;
             }
@@ -32,6 +36,8 @@ btnOP.forEach(btn => {
 });
 
 function operate(previousValue, operator){
+    isSecond = false;
+    isResult = true;
     currentValue = parseInt(text.value);
     switch(operator){
         case "+":
