@@ -1,13 +1,14 @@
 const btns = document.querySelectorAll(".btnNum")
 const btnOP = document.querySelectorAll(".btnOP")
-const btnEV = document.querySelector(".btnEV")
+
+let text = document.getElementById("text");
 
 let result;
 let currentValue;
 let previousValue;
 let isSecond;
 let operator;
-let text = document.getElementById("text");
+
 
 
 btns.forEach(btn => {
@@ -22,11 +23,11 @@ btns.forEach(btn => {
 
 btnOP.forEach(btn => {
     btn.addEventListener("click", function(){
-        previousValue = parseInt(text.value);
+        previousValue = parseInt(text.value); //parsing into integer
         text.value = btn.value;
         operator = btn.value;
         isSecond = true;
-        text.value = "";
+        text.value = ""; // gets removed for next value
     });
 });
 
@@ -70,3 +71,8 @@ function divide(num1, num2){
     text.value = result;
 }
 
+function clearText(text){
+    text.value = "";
+    previousValue = "";
+    currentValue = "";
+}
