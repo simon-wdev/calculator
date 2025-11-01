@@ -123,9 +123,9 @@ function operate(previousValue, currentValue, operator){
             }else{
                 text.value = Number(result.toPrecision(15));
             }
-            
-    }
-}
+            break;
+        }
+    }      
 
 function setComma(){
     if(text.value.includes(".")){
@@ -180,21 +180,21 @@ window.addEventListener("keydown", (e)=> {
                     return;
                 }
             }      
-    }else if(e.key === "Enter"||e.key === "="){
-        currentValue = parseFloat(text.value);
-        operate(previousValue, currentValue, operator)
-        previousValue = result;
-        operator = null;
-    }else if(e.key === "Backspace"){
-        text.value = text.value.substring(0, text.value.length - 1);
-    }else if(e.key === "Escape"){
-        text.value = "";
-        previousValue = null;
-        currentValue = null;
-        operator = null;
-        isOperatorSet = false;
-        isResult = false;
-        isSecond = false;
+            }else if(e.key === "Enter"||e.key === "="){
+                currentValue = parseFloat(text.value);
+                operate(previousValue, currentValue, operator)
+                previousValue = result;
+                operator = null;
+            }else if(e.key === "Backspace"){
+                text.value = text.value.substring(0, text.value.length - 1);
+            }else if(e.key === "Escape"){
+                text.value = "";
+                previousValue = null;
+                currentValue = null;
+                operator = null;
+                isOperatorSet = false;
+                isResult = false;
+                isSecond = false;
+            }
+        });
     }
-});
-
