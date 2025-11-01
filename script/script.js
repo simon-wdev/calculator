@@ -10,13 +10,12 @@ let isResult = false;
 let operator;
 
 
-
 btns.forEach(btn => {
     btn.addEventListener("click", function(){
             if(isSecond){
                 text.value += btn.value; //input + button text update;
             }else if(isResult){
-                text.value = ""; //clears value on button press
+                text.value = "" + btn.value; //adds directly a new value;
                 isResult = false;
             }else{
                 text.value += btn.value;
@@ -26,18 +25,31 @@ btns.forEach(btn => {
 
 btnOP.forEach(btn => {
     btn.addEventListener("click", function(){
+        if(!operator){
         previousValue = parseInt(text.value); //parsing into integer
         text.value = btn.value;
         operator = btn.value;
         isSecond = true;
         text.value = ""; // gets removed for next value
+        }else{
+            currentValue = parseInt(text.value);
+            operate(previousValue, currentValue, operator);
+            previousValue = result;
+            operator = btn.value;
+        }
     });
 });
 
-function operate(previousValue, operator){
+function getRes(){
+    currentValue = parseInt(text.value);
+    operate(previousValue, currentValue, operator)
+    previousValue = result;
+    operator = "";
+}
+
+function operate(previousValue, currentValue, operator){
     isSecond = false;
     isResult = true;
-    currentValue = parseInt(text.value);
     switch(operator){
         case "+":
             add(previousValue, currentValue);
