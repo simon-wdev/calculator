@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="./style/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,7 +18,7 @@
     <button class="btn btnOP num7" value="%">%</button>
     <button class="btn btnOP num7" value="/">/</button>
     <button class="btn btnOP num8" value="^">^</button>
-    <button class="btn btnNum num9" onclick="back()">
+    <button class="btn btnLast" onclick="back()">
         <img src="./icons/backspace.svg" class="backspace">
     </button>
     <button class="btn btnNum num7" value="7">7</button>
@@ -31,9 +34,9 @@
     <button class="btn btnNum num3" value="3">3</button>
     <button class="btn btnOP opSub" value="-">-</button>
     <button class="btn btnNum num0" value="0">0</button>
-    <button class="btn btnComma comma" value=".">.</button>
-    <button class="btn btnEV eval" onclick="getRes()">=</button>
-    <button class="btn btnClear clear" onclick="clearText()">AC</button>
+    <button class="btn btnComma btnLast" value=".">.</button>
+    <button class="btn btnEV btnLast" onclick="getRes()">=</button>
+    <button class="btn btnClear btnLast" onclick="clearText()">AC</button>
 </div>
 
 
