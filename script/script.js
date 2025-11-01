@@ -1,6 +1,5 @@
 const btns = document.querySelectorAll(".btnNum")
 const btnOP = document.querySelectorAll(".btnOP")
-
 let text = document.getElementById("text");
 
 let result;
@@ -54,6 +53,15 @@ function operate(previousValue, operator){
 
         case "/":
             divide(previousValue,currentValue);
+            break;
+
+        case "%":
+            modulo(previousValue, currentValue);
+            break;
+        
+        case "^":
+            power(previousValue,currentValue);
+            
     }
 }
 
@@ -77,8 +85,22 @@ function divide(num1, num2){
     text.value = result;
 }
 
-function clearText(text){
+function modulo(num1, num2){
+    result = num1 % num2;
+    text.value = result;
+}
+
+function power(num1, num2){
+    result = num1**num2;
+    text.value = result;
+}
+
+function clearText(){
     text.value = "";
     previousValue = "";
     currentValue = "";
+}
+
+function back(){
+    text.value = text.value.substring(0, text.value.length - 1);
 }

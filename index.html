@@ -12,6 +12,12 @@
     <input class="display-text" type="text" id="text">
 </div>
 <div class="btnBox">
+    <button class="btn btnOP num7" value="%">%</button>
+    <button class="btn btnOP num7" value="/">/</button>
+    <button class="btn btnOP num8" value="^">^</button>
+    <button class="btn btnNum num9" onclick="back()">
+        <img src="./icons/backspace.svg" class="backspace">
+    </button>
     <button class="btn btnNum num7" value="7">7</button>
     <button class="btn btnNum num8" value="8">8</button>
     <button class="btn btnNum num9" value="9">9</button>
@@ -27,7 +33,7 @@
     <button class="btn btnNum num0" value="0">0</button>
     <button class="btn btnComma comma" value=".">.</button>
     <button class="btn btnEV eval" onclick="operate(previousValue, operator)">=</button>
-    <button class="btn btnClear clear" onclick="clearText(text)">C</button>
+    <button class="btn btnClear clear" onclick="clearText()">C</button>
 </div>
 
 
