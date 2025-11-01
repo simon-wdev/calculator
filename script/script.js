@@ -28,14 +28,14 @@ btns.forEach(btn => {
 btnOP.forEach(btn => {
     btn.addEventListener("click", function(){
         if(!operator){
-        previousValue = parseInt(text.value); //parsing into integer
+        previousValue = parseFloat(text.value); //parsing into integer
         text.value = btn.value;
         operator = btn.value;
         isSecond = true;
         text.value = ""; // gets removed for next value
         }else{
             if(!isOperatorSet){
-            currentValue = parseInt(text.value);
+            currentValue = parseFloat(text.value);
             operate(previousValue, currentValue, operator);
             previousValue = result;
             operator = btn.value;
@@ -49,7 +49,7 @@ btnOP.forEach(btn => {
 });
 
 function getRes(){
-    currentValue = parseInt(text.value);
+    currentValue = parseFloat(text.value);
     operate(previousValue, currentValue, operator)
     previousValue = result;
     operator = null;
@@ -60,64 +60,79 @@ function operate(previousValue, currentValue, operator){
     isResult = true;
     switch(operator){
         case "+": 
-            add(previousValue, currentValue);
+            result = previousValue + currentValue;
+                if(!Number.isInteger(result)){
+                    result = parseFloat(result.toFixed(10));
+                    text.value = result;
+                }else{
+                    text.value = Number(result.toPrecision(15));
+                }
             break;
             
         case "-":
-            subtract(previousValue,currentValue);
+            result = previousValue - currentValue;
+                if(!Number.isInteger(result)){
+                    result = parseFloat(result.toFixed(10));
+                    text.value = result;
+                }else{
+                    text.value = Number(result.toPrecision(15));
+                }
             break;
 
         case "*":
-            multiply(previousValue,currentValue);
+            result = previousValue * currentValue;
+                if(!Number.isInteger(result)){
+                    result = parseFloat(result.toFixed(10));
+                    text.value = result;
+                }else{
+                    text.value = Number(result.toPrecision(15));
+                }
             break;
 
         case "/":
-            divide(previousValue,currentValue);
-            break;
+            if(currentValue === 0){
+                result = "Syntax Error"
+                text.value = result;
+                break;
+            }else{
+                result = previousValue / currentValue;
+                    if(!Number.isInteger(result)){
+                        result = parseFloat(result.toFixed(10));
+                        text.value = result;
+                    }else{
+                        text.value = Number(result.toPrecision(15));
+                    }
+                break;
+            }
 
         case "%":
-            modulo(previousValue, currentValue);
+            result = previousValue % currentValue;
+            if(!Number.isInteger(result)){
+                result = parseFloat(result.toFixed(10));
+                text.value = result;
+            }else{
+                text.value = Number(result.toPrecision(15));
+            }
             break;
         
         case "^":
-            power(previousValue,currentValue);
+            result = previousValue ** currentValue;
+            if(!Number.isInteger(result)){
+                result = parseFloat(result.toFixed(10));
+                text.value = result;
+            }else{
+                text.value = Number(result.toPrecision(15));
+            }
             
     }
 }
 
-function add(num1, num2){
-    result = num1 + num2;
-    text.value = result;
-}
-
-function subtract(num1, num2){
-    result = num1 - num2;
-    text.value = result;
-}
-
-function multiply(num1, num2){
-    result = num1 * num2;
-    text.value = result;
-}
-
-function divide(num1, num2){
-    if (num2 === 0){
-        result = "Syntax Error";
-        text.value = result;
+function setComma(){
+    if(text.value.includes(".")){
+        return;
     }else{
-        result = num1 / num2;
-        text.value = result;
+        text.value += ".";
     }
-}
-
-function modulo(num1, num2){
-    result = num1 % num2;
-    text.value = result;
-}
-
-function power(num1, num2){
-    result = num1**num2;
-    text.value = result;
 }
 
 function clearText(){
