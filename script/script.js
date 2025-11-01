@@ -7,6 +7,7 @@ let currentValue;
 let previousValue;
 let isSecond = false;
 let isResult = false;
+let isOperatorSet = false;
 let operator;
 
 
@@ -16,6 +17,7 @@ btns.forEach(btn => {
                 text.value += btn.value; //input + button text update;
             }else if(isResult){
                 text.value = "" + btn.value; //adds directly a new value;
+                isOperatorSet = false;
                 isResult = false;
             }else{
                 text.value += btn.value;
@@ -32,10 +34,16 @@ btnOP.forEach(btn => {
         isSecond = true;
         text.value = ""; // gets removed for next value
         }else{
+            if(!isOperatorSet){
             currentValue = parseInt(text.value);
             operate(previousValue, currentValue, operator);
             previousValue = result;
             operator = btn.value;
+            isOperatorSet = true;
+            }else{
+                operator = btn.value;
+                return;
+            }
         }
     });
 });
@@ -44,7 +52,7 @@ function getRes(){
     currentValue = parseInt(text.value);
     operate(previousValue, currentValue, operator)
     previousValue = result;
-    operator = "";
+    operator = null;
 }
 
 function operate(previousValue, currentValue, operator){
@@ -109,8 +117,12 @@ function power(num1, num2){
 
 function clearText(){
     text.value = "";
-    previousValue = "";
-    currentValue = "";
+    previousValue = null;
+    currentValue = null;
+    operator = null;
+    isOperatorSet = false;
+    isResult = false;
+    isSecond = false;
 }
 
 function back(){
