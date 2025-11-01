@@ -148,3 +148,53 @@ function clearText(){
 function back(){
     text.value = text.value.substring(0, text.value.length - 1);
 }
+
+window.addEventListener("keydown", (e)=> {
+    e.preventDefault();
+    if (e.key >= 0 && e.key <= 9){
+            if(isSecond){
+                text.value += e.key; //input + button text update;
+            }else if(isResult){
+                text.value = "" + e.key; //adds directly a new value;
+                isOperatorSet = false;
+                isResult = false;
+            }else{
+                text.value += e.key;
+            }
+    }else if ("%/+*-^".includes(e.key)){
+            if(!operator){
+                previousValue = parseFloat(text.value); //parsing into integer
+                text.value = e.key;
+                operator = e.key;
+                isSecond = true;
+                text.value = ""; // gets removed for next value
+            }else{
+                if(!isOperatorSet){
+                    currentValue = parseFloat(text.value);
+                    operate(previousValue, currentValue, operator);
+                    previousValue = result;
+                    operator = e.key;
+                    isOperatorSet = true;
+                }else{
+                    operator = e.key;
+                    return;
+                }
+            }      
+    }else if(e.key === "Enter"||e.key === "="){
+        currentValue = parseFloat(text.value);
+        operate(previousValue, currentValue, operator)
+        previousValue = result;
+        operator = null;
+    }else if(e.key === "Backspace"){
+        text.value = text.value.substring(0, text.value.length - 1);
+    }else if(e.key === "Escape"){
+        text.value = "";
+        previousValue = null;
+        currentValue = null;
+        operator = null;
+        isOperatorSet = false;
+        isResult = false;
+        isSecond = false;
+    }
+});
+
