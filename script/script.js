@@ -59,10 +59,10 @@ function operate(previousValue, currentValue, operator){
     isSecond = false;
     isResult = true;
     switch(operator){
-        case "+":
+        case "+": 
             add(previousValue, currentValue);
             break;
-
+            
         case "-":
             subtract(previousValue,currentValue);
             break;
@@ -101,8 +101,13 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2){
-    result = num1 / num2;
-    text.value = result;
+    if (num2 === 0){
+        result = "Syntax Error";
+        text.value = result;
+    }else{
+        result = num1 / num2;
+        text.value = result;
+    }
 }
 
 function modulo(num1, num2){
